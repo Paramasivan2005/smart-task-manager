@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Task Management</title>
+  <link rel="shortcut icon" href="/assets/favicon-CS1yqYHf.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+    integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" crossorigin href="/assets/input-CdQQM-z1.css">
+</head>
+
+<body class="bg-gray-200 overflow-x-hidden">
+  <div class="w-full md:w-full lg:w-[85%] md:h-screen mx-auto flex" id="total-content">
+    <div class="w-full h-full md:w-full md:h-screen lg:h-[90%] bg-white my-auto flex flex-col rounded-md">
+      <!-- upper content -->
+      <div
+        class="w-full h-14 md:h-28 lg:h-[15%] flex justify-between items-center md:justify-between px-5 md:items-center mx-auto"
+        id="upper-content">
+        <div class="md:w-[40%] relative">
+          <i id="search-icon"
+            class="ri-search-line absolute top-1 left-1.5 text-xl md:text-gray-400 cursor-text px-2 py-1 md:px-1 bg-purple-600 md:bg-transparent text-white font-bold"></i>
+          <input type="text" id="search-input"
+            class="opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto bg-white w-full px-10 py-2 rounded-md outline-none placeholder-gray-400 border border-gray-300 focus:border-gray-400 duration-300"
+            placeholder="Search your tasks">
+          <i id="search-submit-arrow"
+            class="ri-arrow-right-circle-fill absolute right-0.5 top-1 text-3xl text-purple-600 opacity-0 pointer-events-none"></i>
+        </div>
+        <div class="relative w-fit px-2 md:w-[20%] text-center flex gap-2">
+          <i class="ri-notification-3-fill bg-gray-100 hover:bg-gray-200 w-10 h-10 p-2 rounded-full cursor-pointer"></i>
+          <i id="user" class="ri-user-fill bg-gray-100 hover:bg-gray-200 w-10 h-10 p-2 rounded-full cursor-pointer"></i>
+          <div id="user-div"
+            class="hidden w-56 h-fit border absolute lg:right-28 right-5 md:right-10 top-10 bg-white  border-gray-200 shadow-xl rounded-xl z-50 duration-200">
+            <h1 class="font-bold font-jost text-2xl px-2 py-5">Hi, <span id="logoutUser">Username</span></h1>
+            <div class="">
+
+              <button id="logout"
+                class="bg-purple-700 text-white font-semibold px-5 py-2 rounded-lg mx-2 mb-5 cursor-pointer">
+                <i class="ri-logout-circle-r-line"></i>
+                Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- total main content whole div -->
+
+      <div id="main-content" class="w-full grid grid-cols-1 md:grid-cols-[70%_30%] overflow-x-hidden overflow-y-auto">
+
+        <!-- LEFT CONTENT -->
+        <div id="left-content" class="bg-gray-50 px-3 py-7 md:px-3 lg:px-10 md:py-5 overflow-y-auto">
+
+          <p id="greetingText" class="text-xs md:text-sm capitalize text-gray-500">
+            good evening,
+            <span id="usernameText"
+              class="text-gray-600 capitalize font-poppins hover:text-gray-800 cursor-pointer">username</span>
+          </p>
+
+          <div class="flex justify-between items-center mb-6 overflow-x-hidden overflow-y-hidden">
+            <div class="flex items-center justify-center gap-2 lg:gap-5">
+              <h1 id="taskTodayText" class="text-3xl md:text-4xl font-semibold font-poppins w-fit">
+                You've got <span id="addTitleClr" class="text-pink-600">2</span> task today
+              </h1>
+              <button id="addtaskbtn"
+                class="bg-purple-700 px-3 py-2 md:px-5 md:py-2  rounded-xl text-white text-sm font-semibold cursor-pointer outline-none text-nowrap ">
+                <i class="ri-add-large-line"></i> Add New
+              </button>
+            </div>
+
+
+            <i id="sort-icon" class="ri-sort-desc text-xl cursor-pointer hover:bg-gray-200 p-2 rounded-full"></i>
+            <!-- sort list -->
+            <div id="sort-list"
+              class=" hidden absolute top-[22%] right-2 md:top-[32%] md:right-[32%] lg:top-[27%] lg:right-[35%] z-50 bg-white/95 backdrop-blur-md border border-gray-200 shadow-xl rounded-xl ">
+              <!-- PRIORITY -->
+              <ul class="bg-white/95 backdrop-blur-md border border-gray-200 shadow-xl rounded-xl w-48">
+
+                <!-- PRIORITY -->
+                <li class="relative submenu-item group">
+                  <div
+                    class="flex justify-between items-center px-4 py-2 hover:bg-gray-100 cursor-pointer submenu-toggle">
+                    <span>Priority</span>
+                    <i
+                      class="chevron ri-arrow-right-s-line transition-transform duration-300 group-hover:rotate-90"></i>
+                  </div>
+
+                  <ul class="submenu hidden absolute top-0 right-full mr-1 lg:left-full lg:right-auto lg:ml-1 w-36
+               bg-white border border-gray-200 shadow-xl rounded-xl lg:group-hover:block">
+                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer sort-priority" data-priority="Low">Low</li>
+                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer sort-priority" data-priority="Normal">Normal
+                    </li>
+                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer sort-priority" data-priority="High">High</li>
+                  </ul>
+                </li>
+
+                <!-- STATUS -->
+                <li class="relative submenu-item group">
+                  <div
+                    class="flex justify-between items-center px-4 py-2 hover:bg-gray-100 cursor-pointer submenu-toggle">
+                    <span>Status</span>
+                    <i
+                      class="chevron ri-arrow-right-s-line transition-transform duration-300 group-hover:rotate-90"></i>
+                  </div>
+
+                  <ul class="submenu hidden absolute top-0 right-full mr-1 lg:left-full lg:right-auto lg:ml-1 w-36
+               bg-white border border-gray-200 shadow-xl rounded-xl lg:group-hover:block">
+                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer sort-status" data-status="Pending">Pending
+                    </li>
+                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer sort-status" data-status="Completed">Completed
+                    </li>
+                  </ul>
+                </li>
+
+                <!-- DATE -->
+                <li id="date-menu" class="relative px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  <span>Select Date</span>
+                  <input id="dropdown-date" type="date" class="absolute inset-0 opacity-0 w-full h-full cursor-pointer">
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+          <div class="flex justify-between items-center relative overflow-x-hidden">
+            <div class=" flex justify-between items-center relative overflow-hidden my-3 ">
+              <h1 class="text-xl font-poppins font-medium">On Hold</h1>
+            </div>
+            <div id="popup-div"
+              class="absolute -right-32  bg-white/95 backdrop-blur-md border border-gray-200 shadow-xl rounded-xl  h-fit pr-3 pl-1 py-1 flex gap-5 items-center duration-500 transform transition-all z-0">
+              <i id="left-arrow" class="ri-arrow-left-line text-2xl cursor-pointer px-2"></i>
+              <a id="demoBtn" href="#"
+                class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-5 py-1 capitalize rounded-2xl font-semibold font-poppins">Demo</a>
+            </div>
+          </div>
+          <!-- TASK ROW -->
+          <div id="pendingTasks" class="flex flex-col">
+
+            <section
+              class="grid grid-cols-1 lg:flex lg:justify-between gap-1 items-center py-4 px-3 border-b border-gray-200 hover:bg-gray-100 transition">
+
+              <!-- Task name -->
+              <div class="group relative flex items-center gap-3 cursor-pointer">
+                <i class="ri-checkbox-blank-circle-line text-pink-600"></i>
+                <p class="font-jost">Identify the implemented team</p>
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2
+              hidden group-hover:block
+              bg-gray-800 text-white text-xs
+              px-3 py-1 rounded-md shadow-md whitespace-nowrap">
+                  Click to mark as complete
+                </div>
+              </div>
+              <div class="lg:flex lg:gap-10">
+                <div class="flex justify-around gap-5 items-center">
+                  <!-- Status -->
+                  <p
+                    class=" bg-yellow-200 text-yellow-700 text-sm font-semibold text-center py-1 px-5 rounded-xl h-fit">
+                    Pending
+                  </p>
+                  <!-- Priority -->
+                  <p class="priority-color flex items-center justify-center gap-1 font-semibold text-amber-500">
+                    <i class="ri-circle-fill text-xs"></i> Normal
+                  </p>
+                </div>
+                <!-- Date -->
+                <div class="flex justify-between items-center gap-5">
+                  <p class="text-center font-jost">1/1/26</p>
+
+                  <!-- Edit -->
+                  <i class="ri-pencil-fill text-center hover:bg-gray-200 rounded-full p-2 cursor-pointer"></i>
+
+                  <!-- Delete -->
+                  <i class="ri-delete-bin-line text-center hover:bg-gray-200 rounded-full p-2 cursor-pointer"></i>
+                </div>
+              </div>
+
+            </section>
+
+          </div>
+          <h1 class="text-xl font-poppins my-3 font-medium">Completed</h1>
+
+          <div id="completedTasks" class="flex flex-col">
+
+            <!-- ROW 1 -->
+            <section
+              class="grid grid-cols-1 lg:flex lg:justify-between gap-1 items-center py-4 px-3 border-b border-gray-200 hover:bg-gray-100 transition">
+
+              <!-- Task name -->
+              <div class="group relative flex items-center gap-3 cursor-pointer">
+                <i class="ri-checkbox-circle-fill text-pink-600"></i>
+                <p class="font-jost text-gray-400 line-through">Identify the implemented team</p>
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2
+              hidden group-hover:block
+              bg-gray-800 text-white text-xs
+              px-3 py-1 rounded-md shadow-md whitespace-nowrap">
+                  Click to mark as complete
+                </div>
+              </div>
+              <div class="lg:flex lg:gap-10">
+                <div class="flex justify-around gap-5 items-center">
+                  <!-- Status -->
+                  <p class=" bg-green-200 text-green-700 text-sm font-semibold text-center py-1 px-5 rounded-xl h-fit">
+                    Completed
+                  </p>
+
+                  <!-- Priority -->
+                  <p class="flex items-center justify-center gap-1 font-semibold text-amber-500">
+                    <i class="ri-circle-fill text-xs"></i> Normal
+                  </p>
+                </div>
+                <!-- Date -->
+                <div class="flex justify-between items-center gap-5">
+                  <p class="text-center font-jost">1/1/26</p>
+
+                  <!-- Edit -->
+                  <i class="ri-pencil-fill text-center hover:bg-gray-200 rounded-full p-2 cursor-pointer"></i>
+
+                  <!-- Delete -->
+                  <i class="ri-delete-bin-line text-center hover:bg-gray-200 rounded-full p-2 cursor-pointer"></i>
+                </div>
+              </div>
+
+            </section>
+          </div>
+
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div id="right-content" class="bg-gray-50 overflow-y-auto overflow-x-hidden py-5">
+
+          <div class="w-full flex flex-col  items-center justify-center">
+
+            <h1 class="text-3xl md:text-xl lg:text-3xl font-bold text-center font-jost">
+              Result Summary
+            </h1>
+
+            <!-- Chart Wrapper -->
+            <div class="w-full md:w-fit lg:w-[80%] px-1 mt-5 md:mt-2">
+              <canvas id="myChart" class="w-full h-auto"></canvas>
+            </div>
+
+          </div>
+          <!-- total tasks -->
+          <div
+            class="mx-auto w-[90%] bg-white/95 backdrop-blur-md border border-gray-200 shadow-md rounded-xl mt-7 px-10 py-3">
+            <h1 class="font-poppins text-gray-500">Total task</h1>
+            <span id="totalCount" class="text-4xl font-bold">5</span>
+          </div>
+          <!-- completed task -->
+          <div
+            class="mx-auto w-[90%] bg-white/95 backdrop-blur-md border border-gray-200 shadow-md rounded-xl mt-7 px-10 py-3">
+            <h1 class="font-poppins text-gray-500">Completed</h1>
+            <span id="completedCount" class="text-4xl font-bold">2</span>
+          </div>
+          <!-- pending task -->
+          <div
+            class="mx-auto w-[90%] bg-white/95 backdrop-blur-md border border-gray-200 shadow-md rounded-xl mt-7 px-10 py-3">
+            <h1 class="font-poppins text-gray-500">Pending</h1>
+            <span id="pendingCount" class="text-4xl font-bold">3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- add task -->
+  <div id="addtask-div"
+    class="outer opacity-0 pointer-events-none absolute z-50 bg-black/40 w-full h-full inset-0 flex justify-center items-center ease-in-out duration-100">
+    <div id="modal-box" class="w-fit md:w-[40%] lg:w-[30%] h-fit bg-white rounded-md px-6 py-2">
+      <h1 id="addtask-title" class="text-2xl font-bold py-2 tracking-wide text-center">Add Task</h1>
+      <div class="flex flex-col">
+        <label class="font-semibold tracking-wide">Task Title</label>
+        <input id="task-name-add" type="text" class="border border-gray-300 px-3 py-1 mt-1"
+          placeholder="Enter task name">
+        <label class="font-semibold tracking-wide mt-1.5">Priority</label>
+        <select id="priority-field-add" class="border border-gray-300 px-3 py-1 mt-1">
+          <option value="" disabled selected hidden>Select Priority</option>
+          <option value="Low">Low</option>
+          <option value="Normal">Normal</option>
+          <option value="High">High</option>
+        </select>
+        <label class="font-semibold tracking-wide mt-1.5">Due Date</label>
+        <input id="due-date-add" type="date" class="border border-gray-300 px-3 py-1 mt-1 w-full">
+        <label class="font-semibold tracking-wide mt-1.5">Status</label>
+
+        <div class="relative group cursor-not-allowed w-full">
+
+          <!-- Disabled Select -->
+          <select class="border border-gray-300 px-3 py-1 mt-1 
+                 pointer-events-none opacity-50 w-full">
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+          </select>
+
+          <!-- Tooltip -->
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2
+              hidden group-hover:block
+              bg-gray-800 text-white text-xs
+              px-3 py-2 rounded-md shadow-md
+              whitespace-nowrap">
+            Tasks are set to <span class="font-semibold">Pending</span> by default.
+          </div>
+
+        </div>
+      </div>
+
+      <div class="flex gap-2 justify-end mt-4 mb-3">
+        <button class="cancel-btn px-5 py-1 bg-gray-200 rounded-lg font-semibold cursor-pointer">Cancel</button>
+        <button class="save-btn px-5 py-1 bg-purple-600 rounded-lg font-semibold text-white cursor-pointer flex gap-2">
+          <div class="load hidden w-4 h-4 border-4 border-dotted border-white rounded-full animate-spin my-auto">
+          </div>
+          <span class="btn-text">Save Task</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./js/chart.js"></script>
+  <script src="./js/dashboard.js"></script>
+</body>
+
+</html>
