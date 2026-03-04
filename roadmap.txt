@@ -1,0 +1,73 @@
+Smart Task Manager with Cloud Sync:
+
+🧠 Concept
+
+User:
+
+1.Tasks add pannuvanga
+
+2.Edit pannuvanga
+
+3.Delete pannuvanga
+
+4.Filter by status
+
+5.Data localStorage la save aagum
+
+6.Fake API la sync pannum
+
+7.JSON format la store aagum
+
+🏗️ Features Breakdown (Each Topic Use Pannuvinga)
+
+----------------------------------------------------------
+
+✅ 1️ Fetch API + Async/Await
+
+1.Dummy API use pannunga:
+
+2.Initial tasks fetch pannunga
+
+3.Loading spinner kaaminga
+
+✅ 2️)JSON
+
+1.API response JSON ah varum
+
+2.JSON.parse()
+
+3.JSON.stringify()
+
+4.Proper object structure maintain pannuvinga
+
+✅ 3️)localStorage
+
+1.Page refresh aana data pogakudadhu
+
+2.localStorage la store pannunga
+
+3.App start aana localStorage irundha load pannunga
+
+Real world behavior simulate pannalaam.
+
+✅ 4️)Advanced Logic Add Pannu
+
+1.Filter: All / Completed / Pending
+
+2.Search bar
+
+3.Due date
+
+4.Sort by latest
+
+5.Priority system (High / Medium / Low)
+
+✅ 5️)Extra Strong Touch (Optional)
+
+1.Dark mode toggle
+
+2.Responsive design
+
+3.Confirmation modal before delete
+
+4.Edit inline
